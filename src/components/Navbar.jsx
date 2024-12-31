@@ -5,10 +5,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // Clear the token (assuming it's stored in localStorage)
-    localStorage.removeItem('token'); // or sessionStorage.removeItem('token') depending on where it's stored
-    
-    // Redirect to the homepage
+    localStorage.removeItem('token'); 
     navigate('/login');
   };
 

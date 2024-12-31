@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import api from '../../axios';
 
-const AddCar = () => {
+const EditCar = () => {
+    const { id } = useParams(); // Get car ID from route parameters
     const [carData, setCarData] = useState({
         make: '',
         model: '',
@@ -14,6 +16,20 @@ const AddCar = () => {
         rentPerHour: ''
     });
 
+    // Fetch car details on component load
+    useEffect(() => {
+        const fetchCarDetails = async () => {
+            try {
+                const response = await api.get(`http://localhost:3000/api/car/${id}`);
+                setCarData(response.data); // Populate form with car details
+            } catch (error) {
+                console.error('Error fetching car details:', error);
+                alert('Failed to load car details. Please try again.');
+            }
+        };
+        fetchCarDetails();
+    }, [id]);
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setCarData({ ...carData, [name]: value });
@@ -22,23 +38,12 @@ const AddCar = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await api.post('http://localhost:3000/api/car', carData);
-            alert('Car added successfully!');
+            await api.put(`http://localhost:3000/api/car/${id}`, carData);
+            alert('Car updated successfully!');
             window.location.href = '/';
-            setCarData({
-                make: '',
-                model: '',
-                year: '',
-                seat: '',
-                color: '',
-                description: '',
-                image: '',
-                availability: true,
-                rent: ''
-            });
         } catch (error) {
-            console.error('Error adding car:', error);
-            alert('Failed to add car. Please try again.');
+            console.error('Error updating car:', error);
+            alert('Failed to update car. Please try again.');
         }
     };
 
@@ -46,7 +51,7 @@ const AddCar = () => {
         <div className="flex">
             <div className="min-h-screen w-[calc(100%-16rem)] ml-64 mt-16 bg-white text-black flex justify-center">
                 <div className="max-w-4xl w-full bg-white rounded-lg shadow-lg p-6">
-                    <h1 className="text-2xl font-bold mb-4">Add a New Car</h1>
+                    <h1 className="text-2xl font-bold mb-4">Edit Car Details</h1>
                     <form onSubmit={handleSubmit} className="space-y-4">
                         {['make', 'model', 'year', 'seat', 'color', 'rentPerHour'].map((field) => (
                             <div key={field}>
@@ -110,7 +115,7 @@ const AddCar = () => {
                             type="submit"
                             className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >
-                            Add Car
+                            Update Car
                         </button>
                     </form>
                 </div>
@@ -119,4 +124,5 @@ const AddCar = () => {
     );
 };
 
-export default AddCar;
+export default EditCar;
+

@@ -46,69 +46,77 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-white text-black p-4">
-      <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-xl border border-gray-300">
-        <h2 className="mb-6 text-3xl font-bold text-center text-black">Login</h2>
+<div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-50 to-blue-100 p-4 relative">
+  <div className="absolute top-10 left-10 text-gray-700 z-10">
+    <h1 className="text-4xl font-bold">Welcome to RentCaroo</h1>
+    <p className="mt-4 text-lg font-medium">Your journey begins here!</p>
+    <p className="mt-2 text-sm">Affordable. Reliable. Fast.</p>
+  </div>
 
-        {error && <p className="mb-4 text-sm text-red-500">{error}</p>}
-        {success && <p className="mb-4 text-sm text-green-500">{success}</p>}
+  <div className="relative z-20 w-full max-w-md p-8 bg-white rounded-lg shadow-xl border border-gray-300">
+    <h2 className="mb-6 text-3xl font-bold text-center text-black">Login</h2>
 
-        <form onSubmit={handleSubmit}>
-          <div className="mb-6">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-              Email
-            </label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-3 mt-2 text-black bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
-            />
-          </div>
+    {error && <p className="mb-4 text-sm text-red-500">{error}</p>}
+    {success && <p className="mb-4 text-sm text-green-500">{success}</p>}
 
-          <div className="mb-6 relative">
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-              Password
-            </label>
-            <input
-              type={showPassword ? 'text' : 'password'}
-              name="password"
-              id="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-3 mt-2 text-black bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none pr-12"
-            />
-            <button
-              type="button"
-              onClick={() => setShowPassword(!showPassword)}
-              className="absolute top-1/2 transform -translate-y-1/2 right-4 text-gray-500 hover:text-gray-700"
-            >
-              {showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
-            </button>
-          </div>
-
-          <button
-            type="submit"
-            className="w-full px-4 py-3 font-semibold text-white bg-blue-600 rounded-lg shadow-md hover:bg-blue-500 focus:ring-2 focus:ring-blue-400 focus:outline-none"
-          >
-            Login
-          </button>
-        </form>
-
-        <div className="mt-4 text-center">
-          <p className="text-sm text-gray-600">
-            Don't have an account?{' '}
-            <Link to="/register" className="text-blue-600 hover:text-blue-700 font-semibold">
-              Register here
-            </Link>
-          </p>
-        </div>
+    <form onSubmit={handleSubmit}>
+      <div className="mb-6">
+        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+          Email
+        </label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+          className="w-full px-4 py-3 mt-2 text-black bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        />
       </div>
+
+      <div className="mb-6 relative">
+        <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+          Password
+        </label>
+        <input
+          type={showPassword ? 'text' : 'password'}
+          name="password"
+          id="password"
+          value={formData.password}
+          onChange={handleChange}
+          required
+          className="w-full px-4 py-3 mt-2 text-black bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none pr-12"
+        />
+        <button
+          type="button"
+          onClick={() => setShowPassword(!showPassword)}
+          className="absolute top-1/2 transform -translate-y-1/2 right-4 text-gray-500 hover:text-gray-700"
+        >
+          {showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
+        </button>
+      </div>
+
+      <button
+        type="submit"
+        className="w-full px-4 py-3 font-semibold text-white bg-blue-600 rounded-lg shadow-md hover:bg-blue-500 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+      >
+        Login
+      </button>
+    </form>
+
+    <div className="mt-4 text-center">
+      <p className="text-sm text-gray-600">
+        Don't have an account?{' '}
+        <Link to="/register" className="text-blue-600 hover:text-blue-700 font-semibold">
+          Register here
+        </Link>
+      </p>
     </div>
+  </div>
+</div>
+
+
   );
 };
 

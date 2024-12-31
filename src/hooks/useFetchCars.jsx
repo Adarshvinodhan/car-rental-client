@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import api from '../axios';
 
 const useFetchCars = () => {
@@ -10,6 +9,8 @@ const useFetchCars = () => {
   useEffect(() => {
     const fetchCars = async () => {
       try {
+        const token = localStorage.getItem('token');
+        if(!token)return;
         const response = await api.get('http://localhost:3000/api/cars');
         setCars(response.data);
       } catch (err) {
@@ -23,7 +24,7 @@ const useFetchCars = () => {
     fetchCars();
   }, []);
 
-  return { cars, loading, error };
+  return { cars, setCars, loading, error };
 };
 
 export default useFetchCars;
