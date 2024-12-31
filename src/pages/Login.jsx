@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../axios';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
 import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Import FontAwesome icons
 import { Link } from 'react-router-dom'; // Import Link for routing
@@ -32,7 +32,7 @@ const Login = () => {
 
     try {
       // Make API request
-      const response = await axios.post('http://localhost:3000/api/auth/login', {
+      const response = await api.post('/api/auth/login', {
         email,
         password,
       });

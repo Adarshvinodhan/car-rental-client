@@ -22,7 +22,7 @@ const CarCard = ({ car,onDelete }) => {
   
     if (window.confirm("Are you sure you want to delete this car?")) {
       try {
-        const response = await api.delete(`http://localhost:3000/api/car/${car._id}`);
+        const response = await api.delete(`/api/car/${car._id}`);
         console.log(response.data);
         onDelete(car._id);
       } catch (err) {

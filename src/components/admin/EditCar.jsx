@@ -20,7 +20,7 @@ const EditCar = () => {
     useEffect(() => {
         const fetchCarDetails = async () => {
             try {
-                const response = await api.get(`http://localhost:3000/api/car/${id}`);
+                const response = await api.get(`/api/car/${id}`);
                 setCarData(response.data); // Populate form with car details
             } catch (error) {
                 console.error('Error fetching car details:', error);

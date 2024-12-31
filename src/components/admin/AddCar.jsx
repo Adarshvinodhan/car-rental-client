@@ -22,7 +22,7 @@ const AddCar = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await api.post('http://localhost:3000/api/car', carData);
+            const response = await api.post('/api/car', carData);
             alert('Car added successfully!');
             window.location.href = '/';
             setCarData({

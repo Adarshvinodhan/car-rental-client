@@ -18,7 +18,7 @@ const CarDetail = () => {
   useEffect(() => {
     const fetchCar = async () => {
       try {
-        const response = await api.get(`http://localhost:3000/api/car/${id}`);
+        const response = await api.get(`/api/car/${id}`);
         setCar(response.data);
         setLoading(false);
       } catch (err) {

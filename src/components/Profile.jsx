@@ -7,7 +7,7 @@ const Profile = () => {
 
   useEffect(() => {
     api
-      .get("http://localhost:3000/api/user")
+      .get("/api/user")
       .then((response) => {
         setUser(response.data);
         setLoading(false);

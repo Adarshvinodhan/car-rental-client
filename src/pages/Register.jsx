@@ -24,7 +24,7 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const response = await api.post("http://localhost:3000/api/auth/register", formData);
+      const response = await api.post("/api/auth/register", formData);
       alert(response.data.message);
       navigate("/login");
     } catch (err) {

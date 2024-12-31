@@ -11,7 +11,7 @@ const useFetchCars = () => {
       try {
         const token = localStorage.getItem('token');
         if(!token)return;
-        const response = await api.get('http://localhost:3000/api/cars');
+        const response = await api.get('/api/cars');
         setCars(response.data);
       } catch (err) {
         console.error(err);
