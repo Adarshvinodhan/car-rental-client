@@ -17,15 +17,12 @@ export const AuthProvider = ({ children }) => {
                   email: decoded.email,
                   role: decoded.role
                  });
-        
       } catch (error) {
         console.error("Error decoding token:", error);
         logout();
       }
     }
   }, []);
-  console.log(user);
-
   return (
     <AuthContext.Provider value={{ user }}>
       {children}

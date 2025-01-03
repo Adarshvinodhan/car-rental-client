@@ -29,7 +29,7 @@ const CarDetail = () => {
 
     const fetchReviews = async () => {
       try {
-        const res = await api.get(`http://localhost:3000/api/review/car/${id}`);
+        const res = await api.get(`/api/review/car/${id}`);
         setReviews(res.data);
       } catch (err) {
         console.error("Failed to load reviews:", err);
@@ -62,7 +62,7 @@ const CarDetail = () => {
         <img
           src={car.image}
           alt={`${car.make} ${car.model}`}
-          className="w-full h-64 object-cover rounded-md mb-4 shadow-md"
+          className="w-full h-64 object-contain rounded-md mb-4 shadow-md"
         />
         <h1 className="text-3xl font-bold mb-2 text-gray-800">{`${car.make} ${car.model}`}</h1>
         <p className="text-gray-600 mb-4 leading-relaxed">{car.description}</p>

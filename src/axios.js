@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Create an Axios instance
 const api = axios.create({
-  //baseURL: 'http://localhost:3000',dev
+  //baseURL: 'http://localhost:3000',//dev
   baseURL: 'https://car-rental-server-pm4i.onrender.com',//production
 });
 

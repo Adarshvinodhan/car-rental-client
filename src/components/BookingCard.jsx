@@ -47,7 +47,7 @@ const BookingCard = ({ booking }) => {
       <p><strong>Amount:</strong> ${booking.amount}</p>
       <p><strong>Status:</strong> {booking.status}</p>
       <p><strong>Date:</strong> {new Date(booking.date).toLocaleString()}</p>
-
+      
       <button 
         onClick={() => setShowReviewForm(true)} 
         className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
