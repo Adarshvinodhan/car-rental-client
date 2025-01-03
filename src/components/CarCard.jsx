@@ -62,23 +62,23 @@ const CarCard = ({ car,onDelete }) => {
         ₹{car.rentPerHour} / hour
       </span>
     </div>
-    <div className="mt-4">
-      <span className="text-sm text-gray-500">Year: {car.year}</span>
-      <span className="ml-4 text-sm text-gray-500">Color: {car.color}</span>
-      <span className="ml-4 text-sm text-gray-500">Seats: {car.seat}</span>
+    <div className="mt-4 flex flex-wrap text-sm text-gray-500 gap-2">
+      <span>Year: {car.year}</span>
+      <span>Color: {car.color}</span>
+      <span>Seats: {car.seat}</span>
     </div>
-    <div className="mt-6 flex space-x-4">
+    <div className="mt-6 flex flex-wrap gap-4">
       {user.role === "admin" ? (
         <>
           <button
             onClick={handleEdit}
-            className="block bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded"
+            className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded"
           >
             Edit
           </button>
           <button
             onClick={handleDelete}
-            className="block bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
+            className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
           >
             Delete
           </button>
@@ -86,7 +86,7 @@ const CarCard = ({ car,onDelete }) => {
       ) : (
         <Link
           to={`/car/${car._id}`}
-          className="block text-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
           onClick={(e) => e.stopPropagation()} // Prevents parent click event
         >
           Book Now
@@ -95,6 +95,7 @@ const CarCard = ({ car,onDelete }) => {
     </div>
   </div>
 </div>
+
 
   );
 };

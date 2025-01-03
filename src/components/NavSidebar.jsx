@@ -1,32 +1,57 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { FiMenu, FiX } from "react-icons/fi";
 
-const Sidebar = () => {
+const NavSidebar = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
+
   const toggleMenu = () => setIsOpen(!isOpen);
+  console.log(isOpen);
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
 
   return (
     <>
-      {/* Hamburger Icon for Smaller Screens */}
-      <div className="md:hidden p-4 z-50">
-        <button onClick={toggleMenu} className="text-gray-700 md:hidden p-4 z-50">
-          {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-        </button>
+      {/* Navbar */}
+      <div className="fixed top-0 left-0 w-[100vw] sm:left-64 sm:w-[calc(100%-16rem)] bg-white shadow-md px-4 py-2 h-16 z-50">
+        <div className="flex items-center justify-between">
+          {/* Hamburger Menu for Smaller Screens */}
+            <button onClick={toggleMenu} className="text-gray-700 sm:hidden p-2 z-40">
+            {isOpen ? <FiX size={24} className="text-black" /> : <FiMenu size={24} className="text-black" />}
+            </button>
+          {/* Logo */}
+          <div className="flex-1 text-center text-2xl font-bold text-black sm:text-left">
+            <Link to="/" className="hover:text-gray-700 transition duration-200">
+              RentCaroo
+            </Link>
+          </div>
+
+          {/* Logout Button */}
+          <button
+            onClick={handleLogout}
+            className="text-black hover:text-gray-700 transition duration-200 font-semibold"
+          >
+            Logout
+          </button>
+        </div>
       </div>
 
-      {/* Sidebar Menu */}
+      {/* Sidebar */}
       <div
         className={`fixed top-0 left-0 w-64 h-screen bg-white shadow-md border-white p-4 transform ${
           isOpen ? "translate-x-0" : "-translate-x-full"
-        } md:translate-x-0 transition-transform duration-300 ease-in-out z-40`}
+        } sm:translate-x-0 transition-transform duration-300 ease-in-out z-40`}
       >
-        <h2 className="text-xl font-semibold mt-8 sm:mt-0 mb-4">Welcome, {user.username}</h2>
+        <h2 className="text-xl font-semibold mt-12 sm:mt-0 mb-4">
+          Welcome, {user.username}
+        </h2>
         <nav>
           <ul className="space-y-4">
-            {/* User-only links */}
             {user.role === "user" && (
               <>
                 <li>
@@ -58,7 +83,6 @@ const Sidebar = () => {
                 </li>
               </>
             )}
-            {/* Admin-only links */}
             {user.role === "admin" && (
               <>
                 <li>
@@ -94,10 +118,10 @@ const Sidebar = () => {
         </nav>
       </div>
 
-      {/* Overlay for closing menu on outside click */}
+      {/* Overlay for Sidebar */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 md:hidden"
+          className="fixed inset-0 bg-black bg-opacity-50 sm:hidden"
           onClick={toggleMenu}
         ></div>
       )}
@@ -105,4 +129,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default NavSidebar;

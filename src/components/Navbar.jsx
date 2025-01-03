@@ -12,6 +12,7 @@ const Navbar = () => {
   return (
 <div className="fixed top-0 left-0 w-[100vw] sm:left-64 sm:w-[calc(100%-16rem)] bg-white shadow-md px-4 py-2 h-16 z-30">
   <div className="flex items-center justify-between">
+    
     {/* Logo Section - Centered on Smaller Screens */}
     <div className="flex-1 text-center text-2xl font-bold text-black sm:text-left">
       <Link to="/" className="hover:text-gray-700 transition duration-200">
