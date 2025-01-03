@@ -47,7 +47,7 @@ const NavSidebar = () => {
           isOpen ? "translate-x-0" : "-translate-x-full"
         } sm:translate-x-0 transition-transform duration-300 ease-in-out z-40`}
       >
-        <h2 className="text-xl font-semibold mt-12 sm:mt-0 mb-4">
+        <h2 className="text-xl font-semibold mt-14 sm:mt-0 mb-4">
           Welcome, {user.username}
         </h2>
         <nav>

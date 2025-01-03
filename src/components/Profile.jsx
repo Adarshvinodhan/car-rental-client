@@ -35,9 +35,9 @@ const Profile = () => {
   }
 
   return (
-<div className="ml-64 mt-16 p-6 bg-gray-100 min-h-screen">
+<div className="sm:ml-64 mt-16 p-6 bg-gray-100 min-h-screen">
   <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md">
-    <h2 className="text-2xl font-semibold text-center mb-6">User Profile</h2>
+    <h2 className="text-2xl font-semibold text-center mb-6">Your Profile</h2>
     <div className="space-y-4">
       <div className="flex justify-between items-center">
         <span className="font-medium text-gray-600">Username:</span>

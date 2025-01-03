@@ -57,7 +57,7 @@ const CarDetail = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 text-black flex justify-center py-10 px-4">
+    <div className="min-h-screen bg-gray-50 text-black flex justify-center py-2">
       <div className="max-w-4xl w-full bg-white rounded-lg shadow-lg p-8 md:p-16">
         <img
           src={car.image}
