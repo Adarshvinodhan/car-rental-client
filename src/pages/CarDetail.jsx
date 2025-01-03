@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import api from "../axios";
 import { useParams } from "react-router-dom";
 import PaymentButton from "../components/PaymentButton";
-import { jwtDecode } from "jwt-decode";
+import { useAuth } from "../context/AuthContext";
 
 const CarDetail = () => {
   const { id } = useParams();
@@ -11,9 +11,7 @@ const CarDetail = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [perHour, setPerHour] = useState(1);
-  const token = localStorage.getItem("token");
-  const decoded = jwtDecode(token);
-  const user = decoded.id;
+  const{user} = useAuth();
 
   useEffect(() => {
     const fetchCar = async () => {
